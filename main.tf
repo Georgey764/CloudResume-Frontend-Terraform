@@ -118,4 +118,5 @@ resource "aws_s3_object" "object" {
   key    = each.key
   source = each.value["path"]
   content_type = each.value["content_type"]
+  etag = filemd5(each.value["path"])
 }
