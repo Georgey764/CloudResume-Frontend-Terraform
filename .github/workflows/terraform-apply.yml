@@ -1,0 +1,20 @@
+name: Terraform Apply to CloudResume S3
+run-name: Action for ${{ github.repository }}
+on: [push]
+jobs:
+  S3-Terraform-Apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+      - name: HashiCorp - Setup Terraform
+        uses: hashicorp/setup-terraform@v2.0.3
+      - name: Setup AWS SAM CLI
+        uses: aws-actions/setup-sam@v2
+      - name: Run Terraform initialzer
+        run: terraform init
+      - name: Deploy code to AWS
+        run: terraform apply
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
