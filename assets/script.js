@@ -22,7 +22,7 @@ async function getCounter() {
     counter = data.value;
     document.querySelector(
       "#counter"
-    ).innerHTML = `Hey! This page has been loaded ${counter} times in total by people around the world.`;
+    ).innerHTML = `Hey! This page has been loaded ${counter} times in total globally.`;
     setCounter();
   } catch (err) {
     console.log(err);
